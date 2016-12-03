@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//Backlog.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//Backlog.css');
 
 @connect((store) => {
   return {

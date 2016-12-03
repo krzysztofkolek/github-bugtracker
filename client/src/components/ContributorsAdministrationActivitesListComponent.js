@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//ContributorsAdministrationActivitesList.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//ContributorsAdministrationActivitesList.css');
 
 @connect((store) => {
   return {
