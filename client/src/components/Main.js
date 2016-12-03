@@ -1,10 +1,15 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
 
-import React from 'react';
-
 let yeomanImage = require('../images/yeoman.png');
 
+import React from 'react';
+import { connect } from "react-redux"
+
+@connect((store) => {
+  return {
+  };
+})
 class AppComponent extends React.Component {
   render() {
     return (
