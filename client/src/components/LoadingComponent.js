@@ -10,19 +10,26 @@ require('styles//Loading.css');
   };
 })
 class LoadingComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="loading-component">
-        Please edit src/components///LoadingComponent.js to update this component!
       </div>
     );
   }
 }
 
 LoadingComponent.displayName = 'LoadingComponent';
-
-// Uncomment properties you need
-// LoadingComponent.propTypes = {};
-// LoadingComponent.defaultProps = {};
 
 export default LoadingComponent;

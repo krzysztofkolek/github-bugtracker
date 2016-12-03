@@ -10,19 +10,26 @@ require('styles//TeamFavoriteTile.css');
   };
 })
 class TeamFavoriteTileComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="teamfavoritetile-component">
-        Please edit src/components///TeamFavoriteTileComponent.js to update this component!
       </div>
     );
   }
 }
 
 TeamFavoriteTileComponent.displayName = 'TeamFavoriteTileComponent';
-
-// Uncomment properties you need
-// TeamFavoriteTileComponent.propTypes = {};
-// TeamFavoriteTileComponent.defaultProps = {};
 
 export default TeamFavoriteTileComponent;

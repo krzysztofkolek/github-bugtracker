@@ -10,19 +10,26 @@ require('styles//ActiveTasks.css');
   };
 })
 class ActiveTasksComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="activetasks-component">
-        Please edit src/components///ActiveTasksComponent.js to update this component!
       </div>
     );
   }
 }
 
 ActiveTasksComponent.displayName = 'ActiveTasksComponent';
-
-// Uncomment properties you need
-// ActiveTasksComponent.propTypes = {};
-// ActiveTasksComponent.defaultProps = {};
 
 export default ActiveTasksComponent;

@@ -10,19 +10,26 @@ require('styles//ContributorsList.css');
   };
 })
 class ContributorsListComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="contributorslist-component">
-        Please edit src/components///ContributorsListComponent.js to update this component!
       </div>
     );
   }
 }
 
 ContributorsListComponent.displayName = 'ContributorsListComponent';
-
-// Uncomment properties you need
-// ContributorsListComponent.propTypes = {};
-// ContributorsListComponent.defaultProps = {};
 
 export default ContributorsListComponent;

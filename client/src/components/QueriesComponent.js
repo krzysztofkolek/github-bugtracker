@@ -10,19 +10,26 @@ require('styles//Queries.css');
   };
 })
 class QueriesComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="queries-component">
-        Please edit src/components///QueriesComponent.js to update this component!
       </div>
     );
   }
 }
 
 QueriesComponent.displayName = 'QueriesComponent';
-
-// Uncomment properties you need
-// QueriesComponent.propTypes = {};
-// QueriesComponent.defaultProps = {};
 
 export default QueriesComponent;

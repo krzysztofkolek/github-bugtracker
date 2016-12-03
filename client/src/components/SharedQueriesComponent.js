@@ -10,19 +10,26 @@ require('styles//SharedQueries.css');
   };
 })
 class SharedQueriesComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="sharedqueries-component">
-        Please edit src/components///SharedQueriesComponent.js to update this component!
       </div>
     );
   }
 }
 
 SharedQueriesComponent.displayName = 'SharedQueriesComponent';
-
-// Uncomment properties you need
-// SharedQueriesComponent.propTypes = {};
-// SharedQueriesComponent.defaultProps = {};
 
 export default SharedQueriesComponent;

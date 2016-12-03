@@ -10,19 +10,26 @@ require('styles//BugTriage.css');
   };
 })
 class BugTriageComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="bugtriage-component">
-        Please edit src/components///BugTriageComponent.js to update this component!
       </div>
     );
   }
 }
 
 BugTriageComponent.displayName = 'BugTriageComponent';
-
-// Uncomment properties you need
-// BugTriageComponent.propTypes = {};
-// BugTriageComponent.defaultProps = {};
 
 export default BugTriageComponent;

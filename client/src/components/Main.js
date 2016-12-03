@@ -11,6 +11,18 @@ import { connect } from "react-redux"
   };
 })
 class AppComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="index">
@@ -19,9 +31,6 @@ class AppComponent extends React.Component {
       </div>
     );
   }
-}
-
-AppComponent.defaultProps = {
-};
+} 
 
 export default AppComponent;

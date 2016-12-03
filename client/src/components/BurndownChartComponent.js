@@ -10,19 +10,26 @@ require('styles//BurndownChart.css');
   };
 })
 class BurndownChartComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="burndownchart-component">
-        Please edit src/components///BurndownChartComponent.js to update this component!
       </div>
     );
   }
 }
 
 BurndownChartComponent.displayName = 'BurndownChartComponent';
-
-// Uncomment properties you need
-// BurndownChartComponent.propTypes = {};
-// BurndownChartComponent.defaultProps = {};
 
 export default BurndownChartComponent;

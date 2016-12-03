@@ -10,19 +10,26 @@ require('styles//Backlog.css');
   };
 })
 class BacklogComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="backlog-component">
-        Please edit src/components///BacklogComponent.js to update this component!
       </div>
     );
   }
 }
 
 BacklogComponent.displayName = 'BacklogComponent';
-
-// Uncomment properties you need
-// BacklogComponent.propTypes = {};
-// BacklogComponent.defaultProps = {};
 
 export default BacklogComponent;

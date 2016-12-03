@@ -10,19 +10,26 @@ require('styles//TeamFavoritesPanel.css');
   };
 })
 class TeamFavoritesPanelComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="teamfavoritespanel-component">
-        Please edit src/components///TeamFavoritesPanelComponent.js to update this component!
       </div>
     );
   }
 }
 
 TeamFavoritesPanelComponent.displayName = 'TeamFavoritesPanelComponent';
-
-// Uncomment properties you need
-// TeamFavoritesPanelComponent.propTypes = {};
-// TeamFavoritesPanelComponent.defaultProps = {};
 
 export default TeamFavoritesPanelComponent;

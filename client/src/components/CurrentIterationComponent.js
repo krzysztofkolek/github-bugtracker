@@ -10,19 +10,26 @@ require('styles//CurrentIteration.css');
   };
 })
 class CurrentIterationComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="currentiteration-component">
-        Please edit src/components///CurrentIterationComponent.js to update this component!
       </div>
     );
   }
 }
 
 CurrentIterationComponent.displayName = 'CurrentIterationComponent';
-
-// Uncomment properties you need
-// CurrentIterationComponent.propTypes = {};
-// CurrentIterationComponent.defaultProps = {};
 
 export default CurrentIterationComponent;

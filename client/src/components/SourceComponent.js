@@ -10,19 +10,26 @@ require('styles//Source.css');
   };
 })
 class SourceComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="source-component">
-        Please edit src/components///SourceComponent.js to update this component!
       </div>
     );
   }
 }
 
 SourceComponent.displayName = 'SourceComponent';
-
-// Uncomment properties you need
-// SourceComponent.propTypes = {};
-// SourceComponent.defaultProps = {};
 
 export default SourceComponent;

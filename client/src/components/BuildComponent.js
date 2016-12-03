@@ -10,19 +10,26 @@ require('styles//Build.css');
   };
 })
 class BuildComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="build-component">
-        Please edit src/components///BuildComponent.js to update this component!
       </div>
     );
   }
 }
 
 BuildComponent.displayName = 'BuildComponent';
-
-// Uncomment properties you need
-// BuildComponent.propTypes = {};
-// BuildComponent.defaultProps = {};
 
 export default BuildComponent;

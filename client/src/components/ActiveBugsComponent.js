@@ -10,19 +10,26 @@ require('styles//ActiveBugs.css');
   };
 })
 class ActiveBugsComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="activebugs-component">
-        Please edit src/components///ActiveBugsComponent.js to update this component!
       </div>
     );
   }
 }
 
 ActiveBugsComponent.displayName = 'ActiveBugsComponent';
-
-// Uncomment properties you need
-// ActiveBugsComponent.propTypes = {};
-// ActiveBugsComponent.defaultProps = {};
 
 export default ActiveBugsComponent;

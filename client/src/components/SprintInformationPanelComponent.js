@@ -10,19 +10,26 @@ require('styles//SprintInformationPanel.css');
   };
 })
 class SprintInformationPanelComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="sprintinformationpanel-component">
-        Please edit src/components///SprintInformationPanelComponent.js to update this component!
       </div>
     );
   }
 }
 
 SprintInformationPanelComponent.displayName = 'SprintInformationPanelComponent';
-
-// Uncomment properties you need
-// SprintInformationPanelComponent.propTypes = {};
-// SprintInformationPanelComponent.defaultProps = {};
 
 export default SprintInformationPanelComponent;

@@ -10,19 +10,26 @@ require('styles//ContributorsAdministrationActivitesList.css');
   };
 })
 class ContributorsAdministrationActivitesListComponent extends React.Component {
+  propTypes: {
+
+  }
+
+  defaultProps: {
+
+  }
+
+  constructor(props) {
+    super(props);    
+  }
+
   render() {
     return (
       <div className="contributorsadministrationactiviteslist-component">
-        Please edit src/components///ContributorsAdministrationActivitesListComponent.js to update this component!
       </div>
     );
   }
 }
 
 ContributorsAdministrationActivitesListComponent.displayName = 'ContributorsAdministrationActivitesListComponent';
-
-// Uncomment properties you need
-// ContributorsAdministrationActivitesListComponent.propTypes = {};
-// ContributorsAdministrationActivitesListComponent.defaultProps = {};
 
 export default ContributorsAdministrationActivitesListComponent;
