@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//ActiveTasks.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//ActiveTasks.css');
 
 @connect((store) => {
   return {

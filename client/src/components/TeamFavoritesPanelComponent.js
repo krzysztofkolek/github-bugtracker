@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//TeamFavoritesPanel.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//TeamFavoritesPanel.css');
 
 @connect((store) => {
   return {

@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//BurndownChart.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//BurndownChart.css');
 
 @connect((store) => {
   return {

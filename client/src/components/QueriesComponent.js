@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//Queries.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//Queries.css');
 
 @connect((store) => {
   return {

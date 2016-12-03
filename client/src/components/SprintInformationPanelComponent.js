@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//SprintInformationPanel.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//SprintInformationPanel.css');
 
 @connect((store) => {
   return {

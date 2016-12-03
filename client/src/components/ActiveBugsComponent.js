@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//ActiveBugs.css');
+
 import React from 'react';
 import { connect } from "react-redux";
-
-require('styles//ActiveBugs.css');
 
 @connect((store) => {
   return {

@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//SharedQueries.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//SharedQueries.css');
 
 @connect((store) => {
   return {

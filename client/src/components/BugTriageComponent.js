@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//BugTriage.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//BugTriage.css');
 
 @connect((store) => {
   return {

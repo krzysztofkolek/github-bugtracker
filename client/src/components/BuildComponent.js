@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//Build.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//Build.css');
 
 @connect((store) => {
   return {

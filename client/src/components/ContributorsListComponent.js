@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//ContributorsList.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//ContributorsList.css');
 
 @connect((store) => {
   return {

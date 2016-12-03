@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//ErrorOccureed.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//ErrorOccureed.css');
 
 @connect((store) => {
   return {

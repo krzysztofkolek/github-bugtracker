@@ -1,9 +1,9 @@
 'use strict';
 
+require('styles//TeamFavoriteWithGraphTile.css');
+
 import React from 'react';
 import { connect } from "react-redux"
-
-require('styles//TeamFavoriteWithGraphTile.css');
 
 @connect((store) => {
   return {
