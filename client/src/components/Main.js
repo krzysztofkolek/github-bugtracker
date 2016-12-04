@@ -1,36 +1,76 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
 
-let yeomanImage = require('../images/yeoman.png');
-
 import React from 'react';
-import { connect } from "react-redux"
+import * as ReactDOM from 'react-dom';
+import {connect} from "react-redux"
+import {Flex, Box} from 'reflexbox'
+import MediaQuery from 'react-responsive';
+
+import LayoutLargeScreenComponent from './LayoutLargeScreenComponent';
+import LayoutMobileLandscapeComponent from './LayoutMobileLandscapeComponent';
+import LayoutMobilePortraitComponent from './LayoutMobilePortraitComponent';
 
 @connect((store) => {
-  return {
-  };
+  return {};
 })
 class AppComponent extends React.Component {
-  propTypes: {
-
+  state = {
+    layout: [{
+      x: 4,
+      y: 0,
+      w: 2,
+      h: 2,
+      i: '0',
+      static: true
+  }, {
+      x: 4,
+      y: 0,
+      w: 2,
+      h: 2,
+      i: '1',
+      static: false
   }
+    ]
+  };
 
-  defaultProps: {
+  onLayoutChange = (layout) => {
+    this.setState({layout: layout});
+  };
 
-  }
+  propTypes : {}
+
+  defaultProps : {}
 
   constructor(props) {
-    super(props);    
+    super(props);
   }
 
   render() {
     return (
       <div className="index">
-        <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+        <MediaQuery
+          minDeviceWidth={1224}
+          values={{
+          deviceWidth: 1600
+        }}>
+          <MediaQuery minDeviceWidth={1824}>
+            <LayoutLargeScreenComponent
+              onLayoutChange={this.onLayoutChange}
+              initialLayout={this.state.layout}/>
+          </MediaQuery>
+        </MediaQuery>
+        <MediaQuery maxWidth={1224}>
+          <MediaQuery orientation='portrait'>
+            <LayoutMobilePortraitComponent/>
+          </MediaQuery>
+          <MediaQuery orientation='landscape'>
+            <LayoutMobileLandscapeComponent/>
+          </MediaQuery>
+        </MediaQuery>
       </div>
     );
   }
-} 
+}
 
 export default AppComponent;
