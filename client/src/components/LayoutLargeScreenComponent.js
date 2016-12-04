@@ -17,7 +17,7 @@ import Settings from 'material-ui/svg-icons/action/settings';
 import Paper from 'material-ui/Paper';
 
 const style = {
-  height: 70,
+  height: 80,
   width: 'auto',
   margin: 20,
   textAlign: 'center',
@@ -49,6 +49,8 @@ class LayoutLargeScreenComponent extends React.Component {
 
   componentDidMount() {
     this.changeSubcategorys('HOME');
+    this.changeActiveSubCateory('OVERVIEW');
+    this.changeActiveSubCateory('OVERVIEW');
   }
   
   changeActiveCateory(category) {
@@ -60,14 +62,24 @@ class LayoutLargeScreenComponent extends React.Component {
   changeActiveSubCateory(category) {
     this.setState({
       activeSubCategory: category
-    })
+    });
   }
 
-  checkCategoryIfActive(categoryName) {
-    if(categoryName == this.state.activeCategory) {
-      return true;
+  subCategoryAction(subcategory) {
+    console.log(subcategory)
+    switch (subcategory) {
+      case 'OVERVIEW':
+          this.changeActiveSubCateory('OVERVIEW');
+        break;    
+      case 'BACKLOG':
+          this.changeActiveSubCateory('BACKLOG');
+        break;    
+      case 'QUERIES':
+          this.changeActiveSubCateory('QUERIES');
+        break; 
     }
-    return false;
+
+    this.changeSubcategorys(this.state.activeCategory);
   }
 
   changeSubcategorys(category) {
@@ -76,7 +88,9 @@ class LayoutLargeScreenComponent extends React.Component {
         this.changeActiveCateory('HOME');
         this.setState({
           subControls: <div>
-            <FlatButton label="Overview" primary={false} disabled={false} />
+            <FlatButton label="OVERVIEW" primary={false} disabled={false} 
+                        className={(this.state.activeSubCategory == 'OVERVIEW')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, 'OVERVIEW')} />
           </div>
         });
         break;
@@ -84,9 +98,15 @@ class LayoutLargeScreenComponent extends React.Component {
         this.changeActiveCateory('CODE');
         this.setState({
           subControls: <div>
-            <FlatButton label="Primary" primary={false} disabled={false} />
-            <FlatButton label="Primary" primary={false} disabled={false} />
-            <FlatButton label="Primary" primary={false} disabled={false} />       
+            <FlatButton label="Primary" primary={false} disabled={false} 
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')} />
+            <FlatButton label="Primary" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')} />
+            <FlatButton label="Primary" primary={false} disabled={false} 
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')}/>       
           </div>
         });
         break;
@@ -94,8 +114,12 @@ class LayoutLargeScreenComponent extends React.Component {
         this.changeActiveCateory('WORK');
         this.setState({
           subControls: <div>
-            <FlatButton label="Backlog" primary={false} disabled={false} />
-            <FlatButton label="Queries" primary={false} disabled={false} />
+            <FlatButton label="BACKLOG" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == 'BACKLOG')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, 'BACKLOG')} />
+            <FlatButton label="QUERIES" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == 'QUERIES')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, 'QUERIES')} />
           </div>
         });
         break;
@@ -103,9 +127,15 @@ class LayoutLargeScreenComponent extends React.Component {
         this.changeActiveCateory('BUILD');
         this.setState({
           subControls: <div>
-            <FlatButton label="Primary" primary={false} disabled={false} />
-            <FlatButton label="Primary" primary={false} disabled={false} />
-            <FlatButton label="Primary" primary={false} disabled={false} />
+            <FlatButton label="Primary" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')} />
+            <FlatButton label="Primary" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')} />
+            <FlatButton label="Primary" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')} />
           </div>
         });
         break;
@@ -113,13 +143,20 @@ class LayoutLargeScreenComponent extends React.Component {
         this.changeActiveCateory('TEST');
         this.setState({
           subControls: <div>
-            <FlatButton label="Primary" primary={false} disabled={false} />
-            <FlatButton label="Primary" primary={false} disabled={false} />
-            <FlatButton label="Primary" primary={false} disabled={false} />
+            <FlatButton label="Primary" primary={false} disabled={false} 
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')}/>
+            <FlatButton label="Primary" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')} />
+            <FlatButton label="Primary" primary={false} disabled={false}
+                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
+                        onClick={this.subCategoryAction.bind(this, '')} />
           </div>
         });
         break; 
     }
+    this.forceUpdate();
   }
 
   renderMainMenu() {
@@ -140,11 +177,25 @@ class LayoutLargeScreenComponent extends React.Component {
             <Paper style={style} zDepth={2} >
               <div>
                 <div>
-                  <FlatButton label="HOME" primary={false} disabled={false} className={(this.state.activeCategory == 'HOME')? 'category-and-subcategory-active': ''} onClick={this.changeSubcategorys.bind(this, 'HOME')}/>
-                  <FlatButton label="CODE" primary={false} disabled={false} className={(this.state.activeCategory == 'CODE')? 'category-and-subcategory-active': ''} onClick={this.changeSubcategorys.bind(this, 'CODE')} />
-                  <FlatButton label="WORK" primary={false} disabled={false} className={(this.state.activeCategory == 'WORK')? 'category-and-subcategory-active': ''}onClick={this.changeSubcategorys.bind(this, 'WORK')} />
-                  <FlatButton label="BUILD" primary={false} disabled={false} className={(this.state.activeCategory == 'BUILD')? 'category-and-subcategory-active': ''}onClick={this.changeSubcategorys.bind(this, 'BUILD')} />
-                  <FlatButton label="TEST" primary={false} disabled={false} className={(this.state.activeCategory == 'TEST')? 'category-and-subcategory-active': ''}onClick={this.changeSubcategorys.bind(this, 'TEST')} />
+                  <FlatButton label="HOME" primary={false} disabled={false} 
+                              className={(this.state.activeCategory == 'HOME')? 'category-and-subcategory-active': ''} 
+                              onClick={this.changeSubcategorys.bind(this, 'HOME')}/>
+
+                  <FlatButton label="CODE" primary={false} disabled={false} 
+                              className={(this.state.activeCategory == 'CODE')? 'category-and-subcategory-active': ''} 
+                              onClick={this.changeSubcategorys.bind(this, 'CODE')} />
+
+                  <FlatButton label="WORK" primary={false} disabled={false} 
+                              className={(this.state.activeCategory == 'WORK')? 'category-and-subcategory-active': ''}
+                              onClick={this.changeSubcategorys.bind(this, 'WORK')} />
+
+                  <FlatButton label="BUILD" primary={false} disabled={false} 
+                              className={(this.state.activeCategory == 'BUILD')? 'category-and-subcategory-active': ''}
+                              onClick={this.changeSubcategorys.bind(this, 'BUILD')} />
+
+                  <FlatButton label="TEST" primary={false} disabled={false} 
+                              className={(this.state.activeCategory == 'TEST')? 'category-and-subcategory-active': ''}
+                              onClick={this.changeSubcategorys.bind(this, 'TEST')} />
                 </div>
                 <div className="subcategorys-menu">
                 {
