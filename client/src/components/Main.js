@@ -61,11 +61,11 @@ class AppComponent extends React.Component {
           </MediaQuery>
         </MediaQuery>
         <MediaQuery maxWidth={1224}>
-          <MediaQuery orientation='portrait'>
-            <LayoutMobilePortraitComponent/>
+          <MediaQuery orientation='portrait'> 
+            
           </MediaQuery>
           <MediaQuery orientation='landscape'>
-            <LayoutMobileLandscapeComponent/>
+            
           </MediaQuery>
         </MediaQuery>
       </div>
