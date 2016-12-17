@@ -1,9 +1,12 @@
 'use strict';
 
-require('styles//LayoutLargeScreen.css');
+require('styles//LayoutLargeScreen.scss');
 
 import React from 'react';
 import {connect} from "react-redux"
+
+import {ReactGridLayout} from 'react-grid-layout'
+import {componentLayout} from '../helpers/ComponentRepository'
 
 import AppBar from 'material-ui/AppBar';
 
@@ -200,6 +203,10 @@ class LayoutLargeScreenComponent extends React.Component {
             </div>
           </div>
         </Paper>
+
+        <div className="main-content">
+          {componentLayout('LayoutLargeScreen')}
+        </div>
       </div>
     );
   }
