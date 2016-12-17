@@ -1,7 +1,7 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from "react-redux"
+import {Provider} from "react-redux"
 
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -11,14 +11,10 @@ import AppBar from 'material-ui/AppBar';
 import App from './components/Main';
 import store from "./stores/Store"
 
-const MaterialApp = () => (
-  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-    <Provider store={store}>
-        <App />
-    </Provider>
-  </MuiThemeProvider>
-);
-
-
 ReactDOM.render(
-    <MaterialApp />, document.getElementById('app'));
+
+  <Provider store={store}>
+  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+    <App/>
+  </MuiThemeProvider>
+</Provider>, document.getElementById('app'));

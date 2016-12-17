@@ -4,7 +4,7 @@ require('styles//LayoutLargeScreen.css');
 
 import React from 'react';
 import {connect} from "react-redux"
- 
+
 import AppBar from 'material-ui/AppBar';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -16,194 +16,190 @@ import FlatButton from 'material-ui/FlatButton';
 import Settings from 'material-ui/svg-icons/action/settings';
 import Paper from 'material-ui/Paper';
 
+import {setActiveCategory, setActiveSubCategory, getActiveCategory, getActiveSubCategory} from '../actions/LayoutLargeScreenAction'
+
 const style = {
   height: 80,
   width: 'auto',
   margin: 20,
   textAlign: 'center',
   display: '-webkit-box',
-  margin: 0,
+  margin: 0
 };
 
 @connect((store) => {
-  return {};
+  return {
+    menu: store.layoutLargeScreen
+  };
 })
 class LayoutLargeScreenComponent extends React.Component {
-  propTypes : {
+  propTypes : {}
 
-  }
-
-  defaultProps : {
-
-  }
+  defaultProps : {}
 
   constructor(props) {
-    super(props); 
-    
-    this.state = {
-      subControls: <div></div>,
-      activeCategory: '',
-      activeSubCategory: ''
-    }      
+    super(props);
+ 
   }
 
-  componentDidMount() {
-    this.changeSubcategorys('HOME');
-    this.changeActiveSubCateory('OVERVIEW');
-    this.changeActiveSubCateory('OVERVIEW');
-  }
-  
   changeActiveCateory(category) {
-    this.setState({
-      activeCategory: category
-    })
+    this.props.dispatch(setActiveCategory(category));
+    var subCategory = this.changeDefaultSubcategory(category);
+    this.props.dispatch(setActiveSubCategory(subCategory));
   }
 
-  changeActiveSubCateory(category) {
-    this.setState({
-      activeSubCategory: category
-    });
-  }
-
-  subCategoryAction(subcategory) {
-    console.log(subcategory)
-    switch (subcategory) {
-      case 'OVERVIEW':
-          this.changeActiveSubCateory('OVERVIEW');
-        break;    
-      case 'BACKLOG':
-          this.changeActiveSubCateory('BACKLOG');
-        break;    
-      case 'QUERIES':
-          this.changeActiveSubCateory('QUERIES');
-        break; 
+  changeDefaultSubcategory(mainCategory) {
+    var defaultSubCategory = '';
+    switch(mainCategory) {
+      case 'HOME': {
+        defaultSubCategory = 'OVERVIEW';
+        break;
+      }
+      case 'CODE': {
+        defaultSubCategory = '';
+        break;
+      }
+      case 'WORK': {
+        defaultSubCategory = 'BACKLOG';
+        break;
+      }
+      case 'BUILD': {
+        defaultSubCategory = '';
+        break;
+      }
+      case 'Test': {
+        defaultSubCategory = '';
+        break;
+      }
     }
+    return defaultSubCategory;
+  }
 
-    this.changeSubcategorys(this.state.activeCategory);
+  subCategoryAction(category) {
+    this.props.dispatch(setActiveSubCategory(category));
   }
 
   changeSubcategorys(category) {
-    switch(category) {
-      case 'HOME':
-        this.changeActiveCateory('HOME');
-        this.setState({
-          subControls: <div>
-            <FlatButton label="OVERVIEW" primary={false} disabled={false} 
-                        className={(this.state.activeSubCategory == 'OVERVIEW')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, 'OVERVIEW')} />
-          </div>
-        });
-        break;
+    switch (category) {
+      case 'HOME': 
+        return(
+           <div>
+              <FlatButton label="OVERVIEW" primary={false} disabled={false}
+                          className={(this.props.menu.activeSubCategory == 'OVERVIEW')? 'category-and-subcategory-active' : ''}
+                          onClick={this.subCategoryAction.bind(this, 'OVERVIEW')}/>
+            </div>);
       case 'CODE':
-        this.changeActiveCateory('CODE');
-        this.setState({
-          subControls: <div>
-            <FlatButton label="Primary" primary={false} disabled={false} 
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')} />
-            <FlatButton label="Primary" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')} />
-            <FlatButton label="Primary" primary={false} disabled={false} 
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')}/>       
-          </div>
-        });
-        break;
+        return(
+           <div>
+              <FlatButton 
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+              <FlatButton
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+              <FlatButton
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+            </div>
+        );
       case 'WORK':
-        this.changeActiveCateory('WORK');
-        this.setState({
-          subControls: <div>
-            <FlatButton label="BACKLOG" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == 'BACKLOG')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, 'BACKLOG')} />
-            <FlatButton label="QUERIES" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == 'QUERIES')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, 'QUERIES')} />
-          </div>
-        });
-        break;
+        return(
+          <div>
+              <FlatButton
+                label="BACKLOG" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == 'BACKLOG')
+                ? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, 'BACKLOG')}/>
+              <FlatButton
+                label="QUERIES" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == 'QUERIES')? 'category-and-subcategory-active': ''}
+                onClick={this.subCategoryAction.bind(this, 'QUERIES')}/>
+            </div>
+        );
       case 'BUILD':
-        this.changeActiveCateory('BUILD');
-        this.setState({
-          subControls: <div>
-            <FlatButton label="Primary" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')} />
-            <FlatButton label="Primary" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')} />
-            <FlatButton label="Primary" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')} />
-          </div>
-        });
-        break;
+        return(
+           <div>
+              <FlatButton
+                label="Primary" primary={false} disabled={false} 
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+              <FlatButton
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active': ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+              <FlatButton
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active': ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+            </div>
+        );
       case 'TEST':
-        this.changeActiveCateory('TEST');
-        this.setState({
-          subControls: <div>
-            <FlatButton label="Primary" primary={false} disabled={false} 
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')}/>
-            <FlatButton label="Primary" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')} />
-            <FlatButton label="Primary" primary={false} disabled={false}
-                        className={(this.state.activeSubCategory == '')? 'category-and-subcategory-active': ''} 
-                        onClick={this.subCategoryAction.bind(this, '')} />
-          </div>
-        });
-        break; 
+        return(
+          <div>
+              <FlatButton
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+              <FlatButton
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+              <FlatButton
+                label="Primary" primary={false} disabled={false}
+                className={(this.props.menu.activeSubCategory == '')? 'category-and-subcategory-active' : ''}
+                onClick={this.subCategoryAction.bind(this, '')}/>
+            </div>
+        );
     }
-    this.forceUpdate();
-  }
-
-  renderMainMenu() {
-    
   }
 
   render() {
+    const subMenu = this.changeSubcategorys(this.props.menu.activeCategory);
     return (
-      <div className="layoutlargescreen-component"> 
-          <AppBar title="Github Bugtracker" 
-                  iconElementLeft={<div></div>} >            
-              <FlatButton label="Primary" primary={false} disabled={false} />
-              <FlatButton label="Help" primary={false} disabled={false} />
-              <IconButton disableTouchRipple={false}>
-                <Settings />
-              </IconButton>
-            </AppBar>  
-            <Paper style={style} zDepth={2} >
-              <div>
-                <div>
-                  <FlatButton label="HOME" primary={false} disabled={false} 
-                              className={(this.state.activeCategory == 'HOME')? 'category-and-subcategory-active': ''} 
-                              onClick={this.changeSubcategorys.bind(this, 'HOME')}/>
+      <div className="layoutlargescreen-component">
+        <AppBar title="Github Bugtracker" iconElementLeft={< div > </div>}>
+          <FlatButton label="Primary" primary={false} disabled={false}/>
+          <FlatButton label="Help" primary={false} disabled={false}/>
+          <IconButton disableTouchRipple={false}>
+            <Settings/>
+          </IconButton>
+        </AppBar>
+        <Paper style={style} zDepth={2}>
+          <div>
+            <div>
+              <FlatButton
+                label="HOME" primary={false} disabled={false}
+                className={(this.props.menu.activeCategory == 'HOME')? 'category-and-subcategory-active': ''}
+                onClick={this.changeActiveCateory.bind(this, 'HOME')}/>
 
-                  <FlatButton label="CODE" primary={false} disabled={false} 
-                              className={(this.state.activeCategory == 'CODE')? 'category-and-subcategory-active': ''} 
-                              onClick={this.changeSubcategorys.bind(this, 'CODE')} />
+              <FlatButton
+                label="CODE" primary={false} disabled={false}
+                className={(this.props.menu.activeCategory == 'CODE')? 'category-and-subcategory-active': ''}
+                onClick={this.changeActiveCateory.bind(this, 'CODE')}/>
 
-                  <FlatButton label="WORK" primary={false} disabled={false} 
-                              className={(this.state.activeCategory == 'WORK')? 'category-and-subcategory-active': ''}
-                              onClick={this.changeSubcategorys.bind(this, 'WORK')} />
+              <FlatButton
+                label="WORK" primary={false} disabled={false}
+                className={(this.props.menu.activeCategory == 'WORK')? 'category-and-subcategory-active': ''}
+                onClick={this.changeActiveCateory.bind(this, 'WORK')}/>
 
-                  <FlatButton label="BUILD" primary={false} disabled={false} 
-                              className={(this.state.activeCategory == 'BUILD')? 'category-and-subcategory-active': ''}
-                              onClick={this.changeSubcategorys.bind(this, 'BUILD')} />
+              <FlatButton
+                label="BUILD" primary={false} disabled={false}
+                className={(this.props.menu.activeCategory == 'BUILD')? 'category-and-subcategory-active': ''}
+                onClick={this.changeActiveCateory.bind(this, 'BUILD')}/>
 
-                  <FlatButton label="TEST" primary={false} disabled={false} 
-                              className={(this.state.activeCategory == 'TEST')? 'category-and-subcategory-active': ''}
-                              onClick={this.changeSubcategorys.bind(this, 'TEST')} />
-                </div>
-                <div className="subcategorys-menu">
-                {
-                  this.state.subControls
-                }
-                </div>          
-              </div>
-            </Paper> 
+              <FlatButton
+                label="TEST" primary={false} disabled={false} 
+                className={(this.props.menu.activeCategory == 'TEST')? 'category-and-subcategory-active': ''}
+                onClick={this.changeActiveCateory.bind(this, 'TEST')}/>
+            </div>
+            <div className="subcategorys-menu"> 
+            { subMenu }
+            </div>
+          </div>
+        </Paper>
       </div>
     );
   }
