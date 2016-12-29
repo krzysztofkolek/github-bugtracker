@@ -25,6 +25,7 @@ class TeamFavoritesPanelComponent extends React.Component {
   render() {
     return (
       <div className="teamfavoritespanel-component">
+      teamfavoritespanel
       </div>
     );
   }

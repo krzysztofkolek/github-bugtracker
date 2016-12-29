@@ -1,15 +1,28 @@
 import React from 'react';
 
-export function componentLayout(componentCode) {
-    switch (componentCode) {
-        case 'LayoutLargeScreen':
-            return(<div>                
-                <div key="a" data-grid={{x: 0, y: 0, w: 1, h: 2, static: true}}>a</div>
-                <div key="b" data-grid={{x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4}}>b</div>
-                <div key="c" data-grid={{x: 4, y: 0, w: 1, h: 2}}>c</div>
-            </div>
-            );
-            
+import {homeRepository} from './HomeViewRepository'
+import {codeRepository} from './CodeViewRepository'
+import {workRepository} from './WorkViewRepository'
+import {buildRepository} from './BuildViewRepository'
+import {testRepository} from './TestViewRepository'
+
+export function componentLayout(menuCatergory, subMenuCategory) {
+    switch (menuCatergory) {
+        case 'HOME': {
+            return homeRepository(subMenuCategory); 
+        }
+        case 'CODE': {
+            return codeRepository(subMenuCategory); 
+        }
+        case 'WORK': {
+            return workRepository(subMenuCategory); 
+        }
+        case 'BUILD': {
+            return buildRepository(subMenuCategory); 
+        }
+        case 'TEST': {
+            return testRepository(subMenuCategory); 
+        }
     }
     return <div></div>;
 }

@@ -1,0 +1,25 @@
+.overviewrightpanel-component {
+  padding: 20px;
+
+  img {
+      margin-top: 0 !important;
+  }
+
+  li {
+    list-style-type: none;
+    margin-left: 20px
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &>ul:nth-of-type(2) > li  {
+    display: inline-flex;
+    &>a {
+      padding-left: 20px;
+    }  
+  }
+}
+

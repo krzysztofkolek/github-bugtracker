@@ -5,13 +5,15 @@ require('styles//LayoutLargeScreen.scss');
 import React from 'react';
 import {connect} from "react-redux"
 
-import {ReactGridLayout} from 'react-grid-layout'
-import {componentLayout} from '../helpers/ComponentRepository'
-
 import AppBar from 'material-ui/AppBar';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
+
+import _ from 'lodash';
+import {Responsive, WidthProvider} from 'react-grid-layout';
+const ResponsiveReactGridLayout = WidthProvider(Responsive);
+import {componentLayout} from '../helpers/ComponentRepository'
 
 import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
@@ -39,7 +41,7 @@ class LayoutLargeScreenComponent extends React.Component {
   propTypes : {}
 
   defaultProps : {}
-
+   
   constructor(props) {
     super(props);
  
@@ -205,7 +207,13 @@ class LayoutLargeScreenComponent extends React.Component {
         </Paper>
 
         <div className="main-content">
-          {componentLayout('LayoutLargeScreen')}
+          <ResponsiveReactGridLayout 
+            onBreakpointChange={this.onBreakpointChange}
+            onLayoutChange={this.onLayoutChange}
+            measureBeforeMount={false}
+            useCSSTransforms={false} >
+              {componentLayout(this.props.menu.activeCategory, this.props.menu.activeSubCategory)}
+          </ResponsiveReactGridLayout>
         </div>
       </div>
     );

@@ -1,0 +1,32 @@
+.sprintinformationpanel-component {
+  height: 100%;
+  width: 100%;
+  
+  &>div:nth-child(1) {
+      padding: 10px;
+      &>div:nth-child(1) {
+        font-size: 25px;
+      }
+      &>div:nth-child(3) {
+        &>div {
+          display: flex;
+          &>div:nth-child(1) {
+            font-size: 40px;
+          }
+          &>div:nth-child(2) {
+            margin-top: 15px;
+            margin-left: 20px;
+            &>div{
+              background-color: red;
+              height: 20px;
+              width: 320px;
+            }
+          }
+        }
+        &>div:nth-child(2) {
+          margin-left: 75px;
+          margin-bottom: 5px;
+        }
+      }
+  }
+}

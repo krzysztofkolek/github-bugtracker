@@ -12,9 +12,8 @@ import App from './components/Main';
 import store from "./stores/Store"
 
 ReactDOM.render(
-
   <Provider store={store}>
-  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-    <App/>
-  </MuiThemeProvider>
-</Provider>, document.getElementById('app'));
+    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+      <App/>
+    </MuiThemeProvider>
+  </Provider>, document.getElementById('app'));
